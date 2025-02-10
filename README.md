@@ -3,6 +3,7 @@
 ## Team
 - Steven Coverdale
 - David Rashidi
+- Kevin Su
 
 ## Requirements
 - APS.Net Core MVC
