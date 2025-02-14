@@ -3,7 +3,6 @@
 ## Team
 - Steven Coverdale
 - David Rashidi
-- Kevin Su
 
 ## Requirements
 - APS.Net Core MVC
@@ -17,7 +16,7 @@
 Implement a system for managing products and categories
 
 ### Details
-- [ ] Page to list all products with options to filter
+- [x] Page to list all products with options to filter
 - [ ] Form for adding new products with details
 - [ ] Update/delete existing products
 - [ ] Summary page
@@ -27,15 +26,15 @@ Implement a system for managing products and categories
 Enable users to search and filter products
 
 - [ ] Search by name
-- [ ] Category Filter
+- [x] Category Filter
 - [ ] Price range filter
 - [ ] Low-Stock filter
-- [ ] Sort by Price
-- [ ] Sort by Quantity
-- [ ] Sort by Name
+- [x] Sort by Price
+- [x] Sort by Quantity
+- [x] Sort by Name
 - [ ] Real-time results (Search i.e., as the user types, update)
 - [ ] User can refine filter results
-- [ ] Simple sorting options to enhance user experience
+- [x] Simple sorting options to enhance user experience
 
 ## Guest Order Tracking
 Allow guests to track and place simple orders
