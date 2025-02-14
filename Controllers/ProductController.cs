@@ -1,10 +1,17 @@
+using assignment1.Data;
 using Microsoft.AspNetCore.Mvc;
 using assignment1.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace assignment1.Controllers;
 
 public class ProductController : Controller
 {
+    private readonly ApplicationDBContext _context;
+    public ProductController(ApplicationDBContext context)
+    {
+        _context = context;
+    }
     private static List<Product> _products = new List<Product>()
     {
         new Product { Id = 1, Name = "Laptop", Category = "Electronics", Price = 1200.00m, Quantity = 5, LowStockThreshold = 2 },
@@ -13,9 +20,9 @@ public class ProductController : Controller
         new Product { Id = 4, Name = "Smartphone", Category = "Electronics", Price = 999.99m, Quantity = 3, LowStockThreshold = 1 }
     };
     
-    public IActionResult Index(string search, string category, string sortBy)
+    public async Task<IActionResult> Index(string search, string category, string sortBy)
     {
-        var products = _products.AsQueryable();
+        var products = _context.Products.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(search))
         {
@@ -35,7 +42,7 @@ public class ProductController : Controller
             _ => products
         };
         
-        return View(products.ToList());
+        return View(await products.ToListAsync());
     }
 
     public IActionResult Create()
@@ -44,24 +51,37 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Product product)
+    public async Task<IActionResult> Create(Product product)
     {
         if (ModelState.IsValid)
         {
-            product.Id = _products.Count + 1;
-            _products.Add(product);
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+        else
+        {
+            foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+            {
+                Console.WriteLine(error.ErrorMessage);
+            }
         }
         return View(product);
     }
 
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        var product = _products.FirstOrDefault(p => p.Id == id);
+        var product = await _context.Products.FindAsync(id);
         if (product != null)
         {
-            _products.Remove(product);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
         }
         return RedirectToAction("Index");
+    }
+
+    public IActionResult About()
+    {
+        return View();
     }
 }

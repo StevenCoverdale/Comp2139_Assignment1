@@ -11,7 +11,7 @@ public class ApplicationDBContext : DbContext
         
     }
     
-    public DbSet<Project> Projects { get; set; }
+    public DbSet<Product> Products { get; set; }
     
     
 }
