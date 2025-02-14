@@ -1,0 +1,43 @@
+@model IEnumerable<assignment1.Models.Product>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Product List</h2>
+
+<form method="get">
+    <input type="text" name="search" placeholder="Search by name" />
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Appliances">Appliances</option>
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th><a href="?sortBy=name">Name</a></th>
+        <th>Category</th>
+        <th><a href="?sortBy=price">Price</a></th>
+        <th><a href="?sortBy=quantity">Quantity</a></th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Category</td>
+            <td>@product.Price</td>
+            <td>@product.Quantity</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a asp-action="Create">Add New Product</a>
