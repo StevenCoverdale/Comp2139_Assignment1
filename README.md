@@ -39,11 +39,11 @@ Enable users to search and filter products
 ## Guest Order Tracking
 Allow guests to track and place simple orders
 
-- [ ] Select products with quantities
-- [ ] Confirmation page with order summary
-- [ ] List of selected products
-- [ ] Total price
-- [ ] Save orders (No user registration required)
+- [x] Select products with quantities
+- [x] Confirmation page with order summary
+- [x] List of selected products
+- [x] Total price
+- [x] Save orders (No user registration required)
 
 ## Application UX and Design
 Develop a user-friendly interface with clear navigation
