@@ -1,0 +1,34 @@
+@model assignment1.Models.Product
+
+@{
+    ViewData["Title"] = "About";
+
+    //Define variables for name and student number
+    var name1 = "Steven Coverdale";
+    var studentNumber1 = "100729832";
+    var name2 = "David Rashidi";
+    var studentNumber2 = "101192241";
+    var courseCode = "COMP2139";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1</title>
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<h1>Welcome to Assignment 1</h1>
+<div class="student-info">
+    <p>@name1</p>
+    <p>@studentNumber1</p>
+</div>
+<div class="student-info">
+    <p>@name2</p>
+    <p>@studentNumber2</p>
+</div>
+<p class="course-code">Course Code: @courseCode</p>
+</body>
+</html>
