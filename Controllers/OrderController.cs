@@ -30,6 +30,7 @@ public class OrderController : Controller
 
         var order = new Order
         {
+            OrderDate = DateTime.UtcNow,
             OrderItems = orderItems,
             TotalPrice = orderItems.Sum(item => item.Price * item.Quantity)
         };
