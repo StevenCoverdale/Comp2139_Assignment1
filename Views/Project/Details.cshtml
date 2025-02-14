@@ -1,0 +1,24 @@
+@model Project
+
+@{
+    ViewData["Title"] = "Project Details";
+}
+
+<h2>Project Details</h2>
+
+<div class="card">
+    <div class="card-body">
+        <div class="card-title">@Model.Name</div>
+        <div class="card-text">@Model.Description</div>
+
+        <dl class="row">
+            <dt class="col-sm-3">Project Id</dt>
+            <dt class="col-sm-9">@Model.ProjectId</dt>
+
+        </dl>
+
+    </div>
+    <a asp-action="Edit" asp-route-id="@Model.ProjectId" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to Project List</a>
+
+</div>
