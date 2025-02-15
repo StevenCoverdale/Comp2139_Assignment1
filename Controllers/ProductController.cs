@@ -15,27 +15,22 @@ public class ProductController : Controller
     
     public async Task<IActionResult> Index(string search, string category, string sortBy)
     {
-        // Use IQueryable for initial query
         var query = _context.Products.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(search))
         {
-            // Use ToLower for server-side evaluation
             search = search.ToLowerInvariant();
             query = query.Where(p => p.Name.ToLower().Contains(search));
         }
 
         if (!string.IsNullOrWhiteSpace(category))
         {
-            // Use ToLower for server-side evaluation
             category = category.ToLowerInvariant();
             query = query.Where(p => p.Category.ToLower().Contains(category));
         }
-
-        // Execute the query and convert to a list
+        
         var products = await query.ToListAsync();
-
-        // Perform client-side operations if needed
+        
         products = sortBy switch
         {
             "price" => products.OrderBy(p => p.Price).ToList(),
@@ -86,4 +81,41 @@ public class ProductController : Controller
     {
         return View();
     }
+    
+    public async Task<IActionResult> Search(string searchQuery, string category, decimal? minPrice, decimal? maxPrice, bool lowStock)
+    {
+        var products = _context.Products.AsQueryable();
+        
+        if (!string.IsNullOrEmpty(searchQuery))
+        {
+            products = products.Where(p => p.Name.ToLower().Contains(searchQuery.ToLower()) || 
+                                           p.Category.ToLower().Contains(searchQuery.ToLower()));
+        }
+        
+        if (!string.IsNullOrEmpty(category))
+        {
+            products = products.Where(p => p.Category == category);
+        }
+        
+        if (minPrice.HasValue)
+        {
+            products = products.Where(p => p.Price >= minPrice);
+        }
+        if (maxPrice.HasValue)
+        {
+            products = products.Where(p => p.Price <= maxPrice);
+        }
+        
+        if (lowStock)
+        {
+            products = products.Where(p => p.Quantity <= p.LowStockThreshold);
+        }
+        
+        var filteredProducts = await products.ToListAsync();
+        
+        return PartialView("_ProductListPartial", filteredProducts);
+    }
+
+
+
 }

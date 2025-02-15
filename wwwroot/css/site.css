@@ -1,44 +1,115 @@
-html {
-  font-size: 14px;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#searchBox {
+  width: 250px;
+}
+
+#categoryFilter, #minPrice, #maxPrice {
+  width: 180px;
+}
+
+#lowStockFilter {
+  transform: scale(1.2);
+  margin-left: 5px;
+}
+
+#searchResults {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.product-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  width: 100%;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-item:hover {
+  transform: translateX(5px);
+}
+
+.product-item h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+  color: #007bff;
+}
+
+.product-item p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.product-item .remove-item-link {
+  align-self: flex-end;
+  color: red;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.product-item .remove-item-link:hover {
+  text-decoration: underline;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+@media screen and (max-width: 600px) {
+  form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #searchBox, #categoryFilter, #minPrice, #maxPrice {
+    width: 100%;
+  }
+
+  .product-item {
+    width: 95%;
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-  font-family: Arial, sans-serif;
-  margin: 20px;
-}
-h1 {
-  color: #4CAF50;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-p {
-  color: #333;
-  font-size: 18px;
-  line-height: 1.5;
-  margin: 5px 0;
-}
-
-.student-info {
-  margin-bottom: 20px;
-}
-
-.course-code {
-  font-weight: bold;
-}
