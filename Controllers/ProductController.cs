@@ -22,27 +22,36 @@ public class ProductController : Controller
     
     public async Task<IActionResult> Index(string search, string category, string sortBy)
     {
-        var products = _context.Products.AsQueryable();
+        // Use IQueryable for initial query
+        var query = _context.Products.AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(search))
         {
-            products = products.Where(p => p.Name.ToLower().Contains(search.ToLower(), System.StringComparison.OrdinalIgnoreCase));
+            // Use ToLower for server-side evaluation
+            search = search.ToLowerInvariant();
+            query = query.Where(p => p.Name.ToLower().Contains(search));
         }
 
         if (!string.IsNullOrWhiteSpace(category))
         {
-            products = products.Where(p => p.Category.ToLower().Contains(category.ToLower(), System.StringComparison.OrdinalIgnoreCase));
+            // Use ToLower for server-side evaluation
+            category = category.ToLowerInvariant();
+            query = query.Where(p => p.Category.ToLower().Contains(category));
         }
 
+        // Execute the query and convert to a list
+        var products = await query.ToListAsync();
+
+        // Perform client-side operations if needed
         products = sortBy switch
         {
-            "price" => products.OrderBy(p => p.Price),
-            "name" => products.OrderBy(p => p.Name),
-            "quantity" => products.OrderBy(p => p.Quantity),
+            "price" => products.OrderBy(p => p.Price).ToList(),
+            "name" => products.OrderBy(p => p.Name).ToList(),
+            "quantity" => products.OrderBy(p => p.Quantity).ToList(),
             _ => products
         };
-        
-        return View(await products.ToListAsync());
+
+        return View(products);
     }
 
     public IActionResult Create()
