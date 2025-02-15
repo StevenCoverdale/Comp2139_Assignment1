@@ -42,3 +42,15 @@ p {
 .course-code {
   font-weight: bold;
 }
+
+.remove-item-link {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-item-link:hover {
+  color: #0056b3;
+}
