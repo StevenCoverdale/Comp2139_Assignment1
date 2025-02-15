@@ -14,18 +14,19 @@
         <tbody>
         @foreach (var product in Model)
         {
-            <tr>
-                <td>@product.Name</td>
-                <td>@product.Price</td>
-                <td>
-                    <input type="number" name="orderItems[@Model.IndexOf(product)].Quantity" value="0" min="0" />
-                    <input type="hidden" name="orderItems[@Model.IndexOf(product)].ProductId" value="@product.Id" />
-                    <input type="hidden" name="orderItems[@Model.IndexOf(product)].Price" value="@product.Price" />
-                </td>
-            </tr>
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+            <td>
+                <input type="number" name="orderItems[@Model.IndexOf(product)].Quantity" value="0" min="0" />
+                <input type="hidden" name="orderItems[@Model.IndexOf(product)].ProductId" value="@product.Id" />
+                <input type="hidden" name="orderItems[@Model.IndexOf(product)].Price" value="@product.Price" />
+            </td>
+        </tr>
         }
         </tbody>
     </table>
 
     <button type="submit">Place Order</button>
-</form>
+</form>     

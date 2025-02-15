@@ -12,6 +12,12 @@
     </div>
 
     <div>
+        <label for="Description">Product Description:</label>
+        <input type="text" asp-for="Description" title="Enter the product Description" placeholder="Product Description" required />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div>
         <label for="Category">Category:</label>
         <select asp-for="Category" title="Select the product category">
             <option value="Electronics">Electronics</option>
