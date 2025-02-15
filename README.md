@@ -25,14 +25,14 @@ Implement a system for managing products and categories
 ## Search and Filter
 Enable users to search and filter products
 
-- [ ] Search by name
+- [x] Search by name
 - [x] Category Filter
 - [ ] Price range filter
 - [ ] Low-Stock filter
 - [x] Sort by Price
 - [x] Sort by Quantity
 - [x] Sort by Name
-- [ ] Real-time results (Search i.e., as the user types, update)
+- [x] Real-time results
 - [ ] User can refine filter results
 - [x] Simple sorting options to enhance user experience
 
@@ -48,8 +48,7 @@ Allow guests to track and place simple orders
 ## Application UX and Design
 Develop a user-friendly interface with clear navigation
 
-- [ ] Homepage (Inventory, search, and orders)
-- [ ] Responsive design
-- [ ] NavBar linking Inventory and Tracking
-- [ ] Team info in the footer
--
+- [x] Homepage (Inventory, search, and orders)
+- [x] Responsive design
+- [x] NavBar linking Inventory and Tracking
+- [x] Team info in the footer
