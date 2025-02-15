@@ -12,13 +12,6 @@ public class ProductController : Controller
     {
         _context = context;
     }
-    private static List<Product> _products = new List<Product>()
-    {
-        new Product { Id = 1, Name = "Laptop", Category = "Electronics", Price = 1200.00m, Quantity = 5, LowStockThreshold = 2 },
-        new Product { Id = 2, Name = "T-Shirt", Category = "Clothing", Price = 15.99m, Quantity = 20, LowStockThreshold = 5 },
-        new Product { Id = 3, Name = "Coffee Maker", Category = "Appliances", Price = 75.50m, Quantity = 8, LowStockThreshold = 3 },
-        new Product { Id = 4, Name = "Smartphone", Category = "Electronics", Price = 999.99m, Quantity = 3, LowStockThreshold = 1 }
-    };
     
     public async Task<IActionResult> Index(string search, string category, string sortBy)
     {
