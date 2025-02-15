@@ -17,23 +17,23 @@ Implement a system for managing products and categories
 
 ### Details
 - [x] Page to list all products with options to filter
-- [ ] Form for adding new products with details
-- [ ] Update/delete existing products
-- [ ] Summary page
-- [ ] Users adding/updating and deleting (Double Check)
+- [x] Form for adding new products with details
+- [x] Update/delete existing products
+- [x] Summary page
+- [x] Users adding/updating and deleting (Double Check)
 
 ## Search and Filter
 Enable users to search and filter products
 
 - [x] Search by name
 - [x] Category Filter
-- [ ] Price range filter
-- [ ] Low-Stock filter
+- [x] Price range filter
+- [x] Low-Stock filter
 - [x] Sort by Price
 - [x] Sort by Quantity
 - [x] Sort by Name
 - [x] Real-time results
-- [ ] User can refine filter results
+- [x] User can refine filter results
 - [x] Simple sorting options to enhance user experience
 
 ## Guest Order Tracking
